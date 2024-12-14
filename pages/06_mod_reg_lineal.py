@@ -35,11 +35,11 @@ def Lineal_Model():
     st.dataframe(df)
         
     # Abrir las figuras
-    imagen1 = Image.open(r'media\mod\04A_hist_var_inp_out.png')
-    imagen2 = Image.open(r'media\mod\04B_Mat_corr_var_inp.png')
-    imagen3 = Image.open(r'media\mod\04C_Reg_ytest_vs_ypred.png')
-    imagen4 = Image.open(r'media\mod\04D_Dist_Residuos.png')
-    imagen5 = Image.open(r'media\mod\04E_Analysis.png')
+    imagen1 = Image.open(r'media/mod/04A_hist_var_inp_out.png')
+    imagen2 = Image.open(r'media/mod/04B_Mat_corr_var_inp.png')
+    imagen3 = Image.open(r'media/mod/04C_Reg_ytest_vs_ypred.png')
+    imagen4 = Image.open(r'media/mod/04D_Dist_Residuos.png')
+    imagen5 = Image.open(r'media/mod/04E_Analysis.png')
 
     # Mostrar las figuras y sus títulos
     st.write("---")  # Línea divisoria horizontal
