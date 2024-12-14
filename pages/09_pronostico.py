@@ -55,9 +55,9 @@ def Pornosticar_main():
             unsafe_allow_html=True)
         
         # Inicializar variables
-        #X_real = None
-        #y_real = None
-        #df_nuevos_normalizados = None
+        X_real = None
+        y_real = None
+        df_nuevos_normalizados = None
 
         # Selección y cargar datos para pronóstico
         df_original, df_nuevos = util.Seleccion_Nuevos_Datos()
@@ -79,41 +79,28 @@ def Pornosticar_main():
 
             y_real = df_nuevos['y']
 
-        # Realizar predicciones
-        if model_pron and model_pron != 'Ninguno' and X_real is not None:
+        # Alinear las columnas de X_real con las del modelo
+        if X_real is not None and model_pron:
+            booster = model_pron.get_booster()  # Obtener el booster del modelo seleccionado
+            feature_names = booster.feature_names
+            X_real = X_real[feature_names]  # Asegurarse de que X_real tenga las mismas columnas que el modelo
+            
+            # Realizar predicciones
             y_pron = util.Cargar_Modelo_y_Predecir(model_pron, X_real)
             st.write("Predicciones realizadas con éxito.")
             st.dataframe(y_pron)
         else:
             st.warning("Por favor seleccione un modelo válido y cargue datos adecuados para realizar predicciones.")
 
-    # Crea la gráfica de linea de tiempo
-
-    st.write("### Linea de Tiempo Valores Reales vs. Pronóstico:")
+    # Crea la gráfica de línea de tiempo
+    st.write("### Línea de Tiempo Valores Reales vs. Pronóstico:")
     util.Fig_Linea_Tiempo_Model(y_real, y_pron, model_pron)
     st.write("---")  # Línea divisoria horizontal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     # Separación de variables de entrada y salida
     X = df.drop(columns=['y'])
     y = df['y']
+    
     # Separación de Variables de entrenamiento y prueba
     X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, random_state=0)
    
@@ -162,10 +149,8 @@ def Pornosticar_main():
 
     # Mostrar el DataFrame en Streamlit
     st.dataframe(df_param, use_container_width=True)
-    
-
-
 
 Pornosticar_main()
+
 
 
