@@ -17,9 +17,9 @@ util.Config_pag()
 util.generarMenu()
 
 # Redimensionar los logotipos
-logo1 = util.resize_image("media/logos/logo1.png", 2.00)
-logo2 = util.resize_image("media/logos/logo2.png", 2.00)
-logo3 = util.resize_image("media/logos/logo3.png", 2.00)
+logo1 = util.resize_image("media/logos/Logo1.png", 2.00)
+logo2 = util.resize_image("media/logos/Logo2.png", 2.00)
+logo3 = util.resize_image("media/logos/Logo3.png", 2.00)
 
 util.Logos_y_Titulo(logo1, logo2, logo3)
 
